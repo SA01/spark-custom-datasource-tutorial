@@ -3,7 +3,6 @@ package com.tutorial.custom.datasource.engine
 import org.apache.spark.sql.sources.Filter
 import org.apache.spark.sql.types.{DoubleType, FloatType, IntegerType, LongType, StringType}
 
-// TODO: Make a point in the article that df.filter().filter() is essentially AND operator between the two filter clauses
 abstract class PushedFilter(val rawFilter: Filter) extends Serializable {
   def filterSqlClause: String
 }

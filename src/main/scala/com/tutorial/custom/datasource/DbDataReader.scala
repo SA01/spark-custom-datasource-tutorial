@@ -12,8 +12,6 @@ import org.apache.spark.sql.util.CaseInsensitiveStringMap
 
 import java.util
 
-// TODO: Create driver not present error
-
 class DbDataReader extends TableProvider with Logging {
   override def inferSchema(options: CaseInsensitiveStringMap): StructType = {
     // TODO: For demonstration

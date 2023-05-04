@@ -68,7 +68,6 @@ class DataScan(
     dataPartitions
   }
 
-  // TODO: Put getting connection in DriverManager instance
   private def getNumberOfQueryRows: Long = {
     var connection: Connection = null
     try {

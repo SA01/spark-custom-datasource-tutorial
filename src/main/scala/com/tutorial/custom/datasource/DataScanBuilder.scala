@@ -9,9 +9,6 @@ import org.apache.spark.sql.sources.{
   EqualTo, Filter, GreaterThan, GreaterThanOrEqual, IsNotNull, IsNull, LessThan, LessThanOrEqual
 }
 
-// TODO: Make a point that pushed filters are passed to Spark at this point.
-//  Filter.Or has left and right filters
-//  Finding: build is called after pushFilters
 class DataScanBuilder(
                        dbQuery: DbQuery,
                        dbConnectorProperties: DbConnectorProperties,
@@ -33,12 +30,17 @@ class DataScanBuilder(
     // TODO: For demonstration
     println("!!====================================================!! DataScanBuilder: pushFilters called")
     val filtersToApply = processFilters(filters = filters)
+    val filtersToSkip = filters.filter(filter => !filtersToApply.map(_.rawFilter).toArray.contains(filter))
 
     log.info("Selected Push Filters: ")
-    filtersToApply.foreach(println(_))
+    filtersToApply.foreach(filter => log.info(filter.toString))
+
+    log.info("Filters to skip: ")
+    filtersToSkip.foreach(filter => log.info(filter.toString))
 
     selectedPushedFilters.++=(filtersToApply)
-    selectedPushedFilters.map(filter => filter.rawFilter).toArray
+
+    filtersToSkip
   }
 
   override def pushedFilters(): Array[Filter] = {

@@ -55,6 +55,8 @@ class DbTable(
 
       val oneRowQuery = createOneRowQuery(providedQuery)
 
+      println(oneRowQuery)
+
       val statement = connection.createStatement()
       val res = statement.executeQuery(oneRowQuery)
 
@@ -64,17 +66,6 @@ class DbTable(
       println(resultMetadata.getColumnCount)
 
       val dbColumns = Range(1, resultMetadata.getColumnCount + 1).map(num => {
-        // TODO: For demonstration
-        println("!!=============================================================!!")
-        println(resultMetadata.getColumnName(num))
-        println(resultMetadata.getColumnLabel(num))
-        println(resultMetadata.getColumnType(num))
-        println(resultMetadata.getColumnTypeName(num))
-        println(resultMetadata.getColumnClassName(num))
-        println(resultMetadata.getColumnDisplaySize(num))
-        println(resultMetadata.isNullable(num))
-        println("!!=============================================================!!")
-
         DbColumn(
           name = resultMetadata.getColumnLabel(num),
           number = num,
