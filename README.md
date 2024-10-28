@@ -9,7 +9,6 @@ This article walks through the process of creating a **custom JDBC read-only dat
 
 - **Introduction to Custom Data Sources**: Learn the fundamentals of creating custom data sources in Apache Spark.
 - **Implementing a JDBC Read-Only Data Source**: Step-by-step instructions for building a JDBC read-only data source, including reading data from external databases.
-- **Code and Configuration**: Practical examples and configurations to implement this data source in Spark projects.
-- **Optimization Tips**: Best practices for optimizing data retrieval and performance using custom data sources in Spark.
+- **Code and Configuration**: Code examples to demonstrate the concepts.
 
 The code in this repository allows you to follow along with the examples in the article and provides hands-on experience in developing a custom data source for Spark.
